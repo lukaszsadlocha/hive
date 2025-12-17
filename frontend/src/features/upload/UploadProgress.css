@@ -1,0 +1,82 @@
+.upload-progress-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.upload-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.upload-name {
+  font-weight: 500;
+  color: #213547;
+}
+
+.upload-stats {
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+.progress-bar-container {
+  height: 8px;
+  background-color: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  transition: width 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-text {
+  font-size: 0.75rem;
+  color: white;
+  font-weight: 600;
+}
+
+.upload-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.status {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.status.uploading {
+  color: #0c5460;
+}
+
+.status.completed {
+  color: #155724;
+}
+
+.status.failed {
+  color: #721c24;
+}
+
+.error-message {
+  font-size: 0.875rem;
+  color: #721c24;
+}
+
+.remove-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
