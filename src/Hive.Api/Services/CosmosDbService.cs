@@ -30,7 +30,7 @@ public class CosmosDbService : ICosmosDbService
             {
                 PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase
             },
-            ConnectionMode = ConnectionMode.Direct,
+            ConnectionMode = ConnectionMode.Gateway, // Gateway mode for emulator compatibility
             MaxRetryAttemptsOnRateLimitedRequests = 9,
             MaxRetryWaitTimeOnRateLimitedRequests = TimeSpan.FromSeconds(30)
         };

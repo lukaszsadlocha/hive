@@ -85,8 +85,8 @@ dotnet run
 ```
 
 **API available at:**
-- **Swagger UI**: https://localhost:5001 (or http://localhost:5000)
-- **API Base URL**: https://localhost:5001/api
+- **Swagger UI**: http://localhost:5265 (or https://localhost:7197)
+- **API Base URL**: http://localhost:5265/api
 
 ### Step 3: Start React Frontend (optional)
 
@@ -131,7 +131,7 @@ Functions automatically listen on the `document-processing-queue` and process do
 
 Open browser and navigate to:
 - **Frontend UI**: http://localhost:5173
-- **Swagger UI**: https://localhost:5001
+- **Swagger UI**: http://localhost:5265
 
 Frontend communicates with Backend API automatically.
 
@@ -181,20 +181,20 @@ Frontend communicates with Backend API automatically.
 ### Example 1: Upload small file
 
 ```bash
-curl -X POST "https://localhost:5001/api/documents?userId=user-001" \
+curl -X POST "http://localhost:5265/api/documents?userId=user-001" \
   -F "file=@/path/to/your/document.pdf"
 ```
 
 ### Example 2: List documents
 
 ```bash
-curl "https://localhost:5001/api/documents?userId=user-001&pageSize=10"
+curl "http://localhost:5265/api/documents?userId=user-001&pageSize=10"
 ```
 
 ### Example 3: Search
 
 ```bash
-curl -X POST "https://localhost:5001/api/search?userId=user-001" \
+curl -X POST "http://localhost:5265/api/search?userId=user-001" \
   -H "Content-Type: application/json" \
   -d '{"searchText":"report"}'
 ```
@@ -203,7 +203,7 @@ curl -X POST "https://localhost:5001/api/search?userId=user-001" \
 
 ```bash
 # 1. Initialize session
-curl -X POST "https://localhost:5001/api/documents/upload/init?userId=user-001" \
+curl -X POST "http://localhost:5265/api/documents/upload/init?userId=user-001" \
   -H "Content-Type: application/json" \
   -d '{
     "fileName":"large-video.mp4",
@@ -215,13 +215,13 @@ curl -X POST "https://localhost:5001/api/documents/upload/init?userId=user-001" 
 # You will receive sessionId in response
 
 # 2. Upload chunks (in loop)
-curl -X POST "https://localhost:5001/api/documents/upload/chunk" \
+curl -X POST "http://localhost:5265/api/documents/upload/chunk" \
   -F "sessionId=abc123..." \
   -F "chunkIndex=0" \
   -F "chunk=@chunk-0.bin"
 
 # 3. Finalize
-curl -X POST "https://localhost:5001/api/documents/upload/complete" \
+curl -X POST "http://localhost:5265/api/documents/upload/complete" \
   -H "Content-Type: application/json" \
   -d '{"sessionId":"abc123..."}'
 ```
@@ -421,29 +421,6 @@ Contains:
 - Frontend-Backend communication
 - Local environment setup instructions
 
-### Advanced Topics
-
-📄 **[Large Files Processing (2GB+)](./docs/LARGE_FILES_PROCESSING.md)**
-- Streaming processing for large documents
-- Durable Functions for long-running processes
-- Chunked processing with checkpoints
-- Azure Batch for very large files
-- Recommendations per file size
-
-📄 **[CosmosDB Backward Compatibility](./docs/COSMOSDB_BACKWARD_COMPATIBILITY.md)**
-- How deserialization of old documents without new fields works
-- Nullable types vs default values
-- Schema migration strategies (migration on read)
-- Backward compatibility test examples
-- Safe usage patterns
-
-📄 **[Frontend - State Management](./docs/FRONTEND_STATE_MANAGEMENT.md)**
-- Redux Toolkit - Store, Slices, Reducers, Actions
-- RTK Query - automatic API caching
-- Global State vs Local State
-- Selectors and memoization
-- Chunked upload with progress tracking
-- Complete code examples
 
 ## 🐛 Troubleshooting
 
@@ -550,11 +527,3 @@ docker-compose restart azurite
 - [ ] Real-time notifications with SignalR
 - [ ] Document collaboration features
 - [ ] Advanced analytics dashboard
-
-## 📝 License
-
-MIT
-
-## 👨‍💻 Author
-
-Project created according to the plan in **Application Plan.md**
